@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+
+  <title>college network</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+  <meta name="description" content="Development of IBM Message Queue Statistics tool" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <base href="https://likarajo.github.io/mqstats/" />
+  <link rel="canonical" href="https://likarajo.github.io/mqstats/" />
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://buttons.github.io/buttons.js" async defer></script>
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <header>
+      <h1>mqstats</h1>
+      <p>Development of IBM Message Queue Statistics tool</p>
+      <div id="banner">
+        <a class="github-button" aria-label="View likarajo/mqstats on GitHub" href="https://github.com/likarajo/mqstats" target="_blank" data-size="large">View on Github</a>
+        <br>
+        <a class="github-button" aria-label="Fork likarajo/mqstats on GitHub" href="https://github.com/likarajo/mqstats/fork" target="_blank" data-icon="octicon-repo-forked" data-show-count="true">Fork</a>
+        <a class="github-button" aria-label="Star likarajo/mqstats on GitHub" href="https://github.com/likarajo/mqstats" target="_blank" data-icon="octicon-star" data-show-count="true">Star</a>
+      </div>
+    </header>
+
+    <div id="home">
+      <!--nav>
+      </nav-->
+
+      <section>
+
+        <h2 id="background">Background:</h2>
+
+        <p>The application that we support in our project is connected to multiple other external applications via message queues. Those external applications are downstream applications, which either receive feed from the central application, or can communicate
+          with the central application on request-reply basis via message queues.</p>
+
+        <p>In 2016 Quarter 1, the central application in our project had an issue for which request (query) messages sent from another external application to the central application were not getting processed within the set limit and were getting timed
+          out. Application support team received multiple high and critical priority incidents to resolve this issue. So, being a member of the support team, I developed this tool which can retrieve the Message Statistics of the requests made from all
+          the external applications that communicate with the central application on request-reply basis.</p>
+
+        <h2 id="problems-faced">Problems faced:</h2>
+
+        <p>The only way to check the request messages was to dig into the huge set of application logs present in the application server (Linux). Moreover, the full set of logs in all the 6 application production servers had to be parsed through individually,
+          which itself being tremendously hectic also consumed a high amount of time and reduced team members’ productivity, ultimately delaying monitoring.</p>
+
+        <h2 id="how-the-tool-helps">How the tool helps?</h2>
+
+        <p>Using the tool, the request message monitoring can be done with just a few mouse clicks. Without this tool it would have taken almost 7-8 hours per issue incidents to manually check the logs one by one. In 2016 Q1, about 7-8 issue incidents occurred,
+          and using the tool for monitoring clearly saved more than 60 hours of manual effort.</p>
+
+        <h2 id="description">Description:</h2>
+
+        <p>The tool displays the number of request messages sent to the central application from another external application and the number of such messages that timed-out, on an hourly basis for the particular date. Along with that, it also calculates
+          the average request message processing time taken by the central application before replying back to the external application.</p>
+
+        <h2 id="requirements">Requirements:</h2>
+
+        <p>Connect to application server (Linux) using Putty or the Windows UI designed with Java. Log in with required credentials when asked. Take a note of the log file location and change the script accordingly.</p>
+
+        <h2 id="inputs">Inputs:</h2>
+
+        <p>1) Date of request (in format YYMMDD) 2) External application (sender application name) 3) Time-out limit (in seconds, which represents the maximum time-limit for processing the request message)</p>
+
+        <h2 id="outputs">Outputs:</h2>
+
+        <p>1) The number of requests made to the central application from the external application given as the input 2) The number of requests that have processing time greater than the time-out limit given as the input 3) The Average processing time of
+          the request messages These above data is displayed on an hourly basis for the particular date taken as an input.</p>
+
+        <h2 id="note">Note:</h2>
+
+        <p>This tool is specifically designed for the custom application used in our project. The code logic can be reused for similar other applications, by carefully locating the log file names and locations, along with (most importantly) the log data
+          structure.</p>
+
+      </section>
+
+    </div>
+
+    <footer>
+      <h3>&copy; 2018 <a href="https://likarajo.github.io" target="_blank">likarajo</a></h3>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
